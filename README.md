@@ -25,3 +25,4 @@ This project exemplifies the potential of computer vision in creating intuitive,
 Dependencies: 1.Opencv
               2.Mediapipe
               3.Numpy
+Just install the above dependencies and run the VirtualMouse.py
