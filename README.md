@@ -36,12 +36,17 @@ HandFunctions.py
 		* Fingers Up Check: Determines which fingers are up based on the landmarks.
 		* Distance Calculation: Calculates the distance between two specified landmarks, useful for detecting gestures like clicking.
 
-  Dependencies
+Dependencies
   
         * OpenCV
         * Mediapipe
         * NumPy
         * AutoPy
+	
+Code Execution
+
+	* Run the VirtualMouse.py to start the virtual mouse application.
+	* Press "F2" to terminate the program.
       
 
 This project exemplifies the potential of computer vision in creating intuitive, touchless interfaces. By converting hand gestures into mouse actions, it opens up new possibilities for user interaction and accessibility. This technology can be particularly beneficial in scenarios where touchless interaction is essential, such as during presentations or for individuals with mobility impairments.
