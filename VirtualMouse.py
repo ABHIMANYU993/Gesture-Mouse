@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import HandFunctions as hf
 import autopy
+import mouse
 
 wCam, hCam = 1280, 720
 frameR = 50
@@ -37,6 +38,12 @@ while True:
         autopy.mouse.move(wScr - clocX, clocY)
         cv2.circle(img, (x1, y1), 10, (255, 0, 255), cv2.FILLED)
         plocX, plocY = clocX, clocY
+
+    if fingers[1] == 1 and fingers[2] == 1 and fingers[3] == fingers[4] == fingers[0] == 0:
+        length, img, lineInfo = detector.findDistance(8, 12, img)
+        if length < 50:
+            cv2.circle(img, (lineInfo[4], lineInfo[5]), 10, (0, 255, 0), cv2.FILLED)
+            mouse.click('left')
 
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == 27:
