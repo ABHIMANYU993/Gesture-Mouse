@@ -47,3 +47,19 @@ class handDetector():
             if draw:
                 cv2.rectangle(img, (xmin - 20, ymin - 20), (xmax + 20, ymax + 20), (0, 255, 0), 2)
         return self.lmList, bbox
+
+    def fingersUp(self):
+        fingers = []
+        if len(self.lmList) != 0:
+            if self.lmList[self.tipIds[0]][1] > self.lmList[self.tipIds[0] - 1][1]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+            for id in range(1, 5):
+                if self.lmList[self.tipIds[id]][2] < self.lmList[self.tipIds[id] - 2][2]:
+                    fingers.append(1)
+                else:
+                    fingers.append(0)
+        else:
+            fingers = [0, 0, 0, 0, 0]
+        return fingers
