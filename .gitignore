@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.venv/
+venv/
+ENV/
+
+# Large media files
+*.mp4
+*.mkv
+Gesture_Mouse_Demo.mp4
+
+# OS files
+.DS_Store
+Thumbs.db
