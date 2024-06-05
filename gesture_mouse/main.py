@@ -1,12 +1,18 @@
+# Mouse Using Computer Vision
+import os
+import sys
 import cv2
 import numpy as np
 import pyautogui
 import keyboard
-import HandFunctions as hf
 import time
 import autopy
 import mouse
 from pynput.mouse import Controller
+
+# Add parent directory to path to enable package execution
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from gesture_mouse.utils.hand_tracking import handDetector
 
 mous = Controller()
 wCam, hCam = 1280, 720
@@ -20,7 +26,7 @@ clocX, clocY = 0, 0
 cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
 cap.set(4, hCam)
-detector = hf.handDetector(maxHands=1)
+detector = handDetector(maxHands=1)
 wScr, hScr = autopy.screen.size()
 
 while True:
