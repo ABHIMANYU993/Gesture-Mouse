@@ -1,9 +1,12 @@
 import cv2
 import numpy as np
+import pyautogui
 import HandFunctions as hf
 import autopy
 import mouse
+from pynput.mouse import Controller
 
+mous = Controller()
 wCam, hCam = 1280, 720
 frameR = 50
 smoothening = 5
@@ -44,6 +47,30 @@ while True:
         if length < 50:
             cv2.circle(img, (lineInfo[4], lineInfo[5]), 10, (0, 255, 0), cv2.FILLED)
             mouse.click('left')
+
+    if fingers[0] == 1 and fingers[1] == 1 and fingers[3] == fingers[4] == fingers[2] == 0:
+        length, img, lineInfo = detector.findDistance(4, 8, img)
+        if length > 30 and length < 120:
+            cv2.circle(img, (lineInfo[4], lineInfo[5]), 10, (0, 255, 0), cv2.FILLED)
+            pyautogui.keyDown('ctrl')
+            mous.scroll(0, 0.6)
+            pyautogui.keyUp('ctrl')
+        if length > 120 and length < 200:
+            cv2.circle(img, (lineInfo[4], lineInfo[5]), 10, (0, 255, 0), cv2.FILLED)
+            pyautogui.keyDown('ctrl')
+            mous.scroll(0, -0.6)
+            pyautogui.keyUp('ctrl')
+
+    if detector.allFingersClosed():
+        mous.scroll(0, 1)
+    if detector.fingersUp() == [1, 0, 0, 0, 0]:
+        mous.scroll(0, -1)
+    if detector.fingersUp() == [0, 0, 0, 0, 1]:
+        mouse.click('right')
+    if detector.fingersUp() == [0, 1, 0, 0, 1]:
+        mous.scroll(1, 0)
+    if detector.fingersUp() == [1, 1, 0, 0, 1]:
+        mous.scroll(-1, 0)
 
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == 27:
