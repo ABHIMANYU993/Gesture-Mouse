@@ -1,7 +1,9 @@
 import cv2
 import numpy as np
 import pyautogui
+import keyboard
 import HandFunctions as hf
+import time
 import autopy
 import mouse
 from pynput.mouse import Controller
@@ -72,6 +74,10 @@ while True:
     if detector.fingersUp() == [1, 1, 0, 0, 1]:
         mous.scroll(-1, 0)
 
+    cTime = time.time()
+    fps = 1 / (cTime - pTime)
+    pTime = cTime
+
     cv2.imshow("Image", img)
-    if cv2.waitKey(1) & 0xFF == 27:
+    if cv2.waitKey(1) and keyboard.is_pressed("f2"):
         break
