@@ -8,7 +8,7 @@ The application detects and tracks hand landmarks to translate natural hand gest
 
 <div align="center">
 
-https://github.com/user-attachments/assets/27708564-d09d-4335-8317-899a41af2353
+https://github.com/user-attachments/assets/a41496f3-ee5e-4b40-a524-98a3b52a0155
 
 </div>
 
